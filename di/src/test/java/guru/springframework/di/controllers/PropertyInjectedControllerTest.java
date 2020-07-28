@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//least preferred method
+//mimick what the Spring Framework will do: least preferred method
 class PropertyInjectedControllerTest {
 
     PropertyInjectedController controller;

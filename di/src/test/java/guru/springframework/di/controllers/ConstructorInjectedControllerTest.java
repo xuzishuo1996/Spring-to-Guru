@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//most preferred method
+//mimick what the Spring Framework will do: most preferred method
 class ConstructorInjectedControllerTest {
 
     ConstructorInjectedController controller;
