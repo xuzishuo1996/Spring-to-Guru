@@ -1,9 +1,6 @@
 package guru.springframework.di;
 
-import guru.springframework.di.controllers.ConstructorInjectedController;
-import guru.springframework.di.controllers.MyController;
-import guru.springframework.di.controllers.PropertyInjectedController;
-import guru.springframework.di.controllers.SetterInjectedController;
+import guru.springframework.di.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,9 @@ public class DiApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(DiApplication.class, args);
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayHello());
 
         MyController myController = (MyController) ctx.getBean("myController");
 

@@ -4,18 +4,16 @@ import guru.springframework.di.services.GreetingService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-//most preferred method
 @Controller
-public class ConstructorInjectedController {
+public class I18nController {   // I18n is the abbreviation for internationlization
 
-    //@Autowired    //optional on constructor injection
     private final GreetingService greetingService;
 
-    public ConstructorInjectedController(@Qualifier("constructorInjectedGreetingService") GreetingService greetingService) {
+    public I18nController(@Qualifier("i18nService") GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 
-    public String getGreeting() {
+    public String sayHello() {
         return greetingService.sayGreeting();
     }
 }
