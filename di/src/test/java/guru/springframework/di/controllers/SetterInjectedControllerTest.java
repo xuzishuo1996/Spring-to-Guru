@@ -1,10 +1,8 @@
 package guru.springframework.di.controllers;
 
-import guru.springframework.di.services.GreetingServiceImpl;
+import guru.springframework.di.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 //mimick what the Spring Framework will do
 class SetterInjectedControllerTest {
@@ -15,7 +13,7 @@ class SetterInjectedControllerTest {
     void setUp() {
         controller = new SetterInjectedController();
 
-        controller.setGreetingService(new GreetingServiceImpl());
+        controller.setGreetingService(new ConstructorGreetingService());
     }
 
     @Test

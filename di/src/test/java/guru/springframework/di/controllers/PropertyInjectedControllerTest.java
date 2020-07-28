@@ -1,11 +1,8 @@
 package guru.springframework.di.controllers;
 
-import guru.springframework.di.services.GreetingServiceImpl;
-import org.junit.jupiter.api.BeforeAll;
+import guru.springframework.di.services.ConstructorGreetingService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 //mimick what the Spring Framework will do: least preferred method
 class PropertyInjectedControllerTest {
@@ -16,7 +13,7 @@ class PropertyInjectedControllerTest {
     void setUp() {
         controller = new PropertyInjectedController();
 
-        controller.greetingService = new GreetingServiceImpl();
+        controller.greetingService = new ConstructorGreetingService();
     }
 
     @Test
