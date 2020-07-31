@@ -2,17 +2,17 @@ package guru.springframework.di.services;
 
 //@Service("i18nService")
 //@Primary
-//@Profile({"default", "en"})
-public class PrimaryGreetingService implements GreetingService {
+//@Profile("es")
+public class PrimarySpanishGreetingService implements GreetingService {
 
     private GreetingRepository greetingRepository;
 
-    public PrimaryGreetingService(GreetingRepository greetingRepository) {
+    public PrimarySpanishGreetingService(GreetingRepository greetingRepository) {
         this.greetingRepository = greetingRepository;
     }
 
     @Override
     public String sayGreeting() {
-        return greetingRepository.getEnglishGreeting();
+        return greetingRepository.getSpanishGreeting();
     }
 }
