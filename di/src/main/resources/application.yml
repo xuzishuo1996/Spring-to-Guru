@@ -3,3 +3,11 @@ guru:
     username: JMS Username
     password: somepass
     url: SomeURL
+
+---   #file separator
+spring:
+  profiles: de  # this is a profile property file. overwrites application.properties & application.yml when spring.profiles.active=de
+guru:
+  jms:
+    username: JMS Username $$$$$$ German
+
