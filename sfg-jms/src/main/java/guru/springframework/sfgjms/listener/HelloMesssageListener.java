@@ -10,6 +10,7 @@ import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import java.util.UUID;
@@ -34,7 +35,8 @@ public class HelloMesssageListener {
 
     @JmsListener(destination = JmsConfig.MY_SEND_RCV_QUEUE)
     public void listenForSendAndReceive(@Payload HelloWorldMessage helloWorldMessage,
-                               @Headers MessageHeaders headers, Message message) throws JMSException {
+                               @Headers MessageHeaders headers, Message message,
+                                        org.springframework.messaging.Message springMessage) throws JMSException {
 
         HelloWorldMessage payloadMsg = HelloWorldMessage
                 .builder()
@@ -42,7 +44,10 @@ public class HelloMesssageListener {
                 .message("World!!! - by sendAndReceive")
                 .build();
 
-        jmsTemplate.convertAndSend(message.getJMSReplyTo(), payloadMsg);
+        // Approach 1: use JMS message type: javax.jms.Message
+        // jmsTemplate.convertAndSend(message.getJMSReplyTo(), payloadMsg);
 
+        // Approach 2: use Spring Message type: org.springframework.messaging.Message
+        jmsTemplate.convertAndSend((Destination) springMessage.getHeaders().get("jms_replyTo"), "got it!");
     }
 }
